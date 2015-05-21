@@ -39,13 +39,12 @@ def non_increasing_sequence(start_off=0):
             break
     return index_initial, index_final + 1
 
-
-student_array = [6, 5, 4, 3, 2, 1]
+# student_array = [6, 5, 4, 3, 2, 1]
 student_array = [1, 2, 3, 4, 5, 6]
 student_array = [4, 1, 2, 3, 1, 4, 9, 11]
-student_array = [15, 20, 5, 21, 50, 20, 11, 6, 10, 19, 11, 8, 9, 12]
-# student_array = [1, 2, 3, 7, 6, 5, 4]
-student_array = [5, 10, 15, 11, 9, 8, 13, 25, 40, 50, 35, 12, 7]
+# student_array = [15, 20, 5, 21, 50, 20, 11, 6, 10, 19, 11, 8, 9, 12]
+student_array = [1, 2, 3, 7, 6, 5, 4]
+# student_array = [5, 10, 15, 11, 9, 8, 13, 25, 40, 50, 35, 12, 7]
 # Initialize Cookie array with all zeros.
 chocolate_array = [0] * len(student_array)
 incr_boundaries = []
