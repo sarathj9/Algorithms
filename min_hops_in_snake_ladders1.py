@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import collections
 from math import ceil
 import sys
