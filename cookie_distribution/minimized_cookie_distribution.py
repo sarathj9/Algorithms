@@ -44,33 +44,37 @@ student_array = [4, 1, 2, 3, 1, 4, 9, 11]
 student_array = [1, 2, 3, 7, 6, 5, 4]
 # student_array = [5, 10, 15, 11, 9, 8, 13, 25, 40, 50, 35, 12, 7]
 # Initialize Cookie array with all zeros.
-chocolate_array = [0] * len(student_array)
-incr_boundaries = []
-n = 0
-while n < len(student_array):
-    scores_range = non_increasing_sequence(n)
-    size = scores_range[1] - scores_range[0]
-    incr_boundaries.append(scores_range[1] - 1)
-    min_cookie = 1
-    for cookie_index in range(scores_range[0], scores_range[1]):
-        print(cookie_index)
-        chocolate_array[cookie_index] = min_cookie
-        min_cookie += 1
 
-    last_index = non_increasing_sequence(n)[1]
-    n = last_index
-    print("next")
 
-# deleting the last element from the boundary check
+def find_min_cookies():
+    global chocolate_array, incr_boundaries, n, scores_range, size, min_cookie, cookie_index, last_index
+    chocolate_array = [0] * len(student_array)
+    incr_boundaries = []
+    n = 0
+    while n < len(student_array):
+        scores_range = non_increasing_sequence(n)
+        size = scores_range[1] - scores_range[0]
+        incr_boundaries.append(scores_range[1] - 1)
+        min_cookie = 1
+        for cookie_index in range(scores_range[0], scores_range[1]):
+            print(cookie_index)
+            chocolate_array[cookie_index] = min_cookie
+            min_cookie += 1
 
-incr_boundaries.pop()
+        last_index = non_increasing_sequence(n)[1]
+        n = last_index
+        print("next")
 
-print(student_array)
-print(chocolate_array)
-print(incr_boundaries)
-
-while check_chocolates() is False:
-    align_cookies()
+    # deleting the last element from the boundary check
+    incr_boundaries.pop()
+    print(student_array)
     print(chocolate_array)
+    print(incr_boundaries)
+    while check_chocolates() is False:
+        align_cookies()
+        print(chocolate_array)
+
+
+find_min_cookies()
 
 exit()
