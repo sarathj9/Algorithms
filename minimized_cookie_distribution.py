@@ -1,5 +1,3 @@
-from __builtin__ import xrange
-
 __author__ = 'sarath'
 
 
