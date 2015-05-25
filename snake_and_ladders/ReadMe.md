@@ -16,20 +16,26 @@ Snake bites. So the problem will default to finding the ladder that take us to t
 
 A formula like below will help us find minimum no. of hops from start to end point using a particular ladder
 
+```math 
 No. of Hops Required for the given ladder = Total number of minimum hops required to reach the ladder +   --->a
-                                            
                                             (Total number of tiles deducted because of ladder) / 6    +   --->b
-                                            
-                                            Total number of minimum hops required from given ladder end   --->c 
-                                            point to the end point
-                                            
+                      Total number of minimum hops required from given ladder end point to the end point  --->c
+```
+                    
 a is minimum distance(implies using any possible ladder) from the start point to ladder start point (should be found)
+
 b is the difference of ladder end points/6 (given)
+
 c is the total no. of tiles (should be found)
 
+Steps followed to satisfy above equation
+
 1. find min hops for all the ladders.
+
 2. find min distance from the start point to all ladder start points.
+
 3. find min distance from all ladder end points to the end point. 
+
 4. find distance from start to end point in all possible paths and know which path is minimum path
 
 | ladder Name| start point|end point|
@@ -61,6 +67,7 @@ c is the total no. of tiles (should be found)
   
 
 The lines in dotted are the minimum paths from ladder start point to start point. 
+
 It is computed by:
  - Identifying the ladder end point that is closest to the current ladder point. 
  - Identifying ladder start point closest to current ladder end point.
