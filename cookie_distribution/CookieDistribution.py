@@ -2,29 +2,29 @@ __author__ = 'sarath'
 
 
 class CookieDistribution(object):
-    incr_boundaries = []
+    seq_boundaries = []
     student_array = []
-    chocolate_array = []
+    cookie_array = []
 
-    def check_chocolates(self):
+    def check_cookie(self):
         align_bool = True
-        for boundary in range(len(self.incr_boundaries)):
-            next2 = self.incr_boundaries[boundary] + 1
-            if self.student_array[self.incr_boundaries[boundary]] > self.student_array[next2]:
-                cookie_balance = self.chocolate_array[self.incr_boundaries[boundary]] > self.chocolate_array[next2]
-                print(self.student_array[self.incr_boundaries[boundary]], self.student_array[next2],
-                      self.chocolate_array[self.incr_boundaries[boundary]], self.chocolate_array[next2],
+        for boundary in range(len(self.seq_boundaries)):
+            next2 = self.seq_boundaries[boundary] + 1
+            if self.student_array[self.seq_boundaries[boundary]] > self.student_array[next2]:
+                cookie_balance = self.cookie_array[self.seq_boundaries[boundary]] > self.cookie_array[next2]
+                print(self.student_array[self.seq_boundaries[boundary]], self.student_array[next2],
+                      self.cookie_array[self.seq_boundaries[boundary]], self.cookie_array[next2],
                       cookie_balance)
                 align_bool = align_bool and cookie_balance
         print("done", align_bool)
         return align_bool
 
-    def align_cookies(self):
-        for i in range(len(self.incr_boundaries)):
-            next1 = self.incr_boundaries[i] + 1
-            if self.student_array[self.incr_boundaries[i]] > self.student_array[next1] and not (
-                    self.chocolate_array[self.incr_boundaries[i]] > self.chocolate_array[next1]):
-                self.chocolate_array[self.incr_boundaries[i]] += 1
+    def balance_cookies(self):
+        for i in range(len(self.seq_boundaries)):
+            next1 = self.seq_boundaries[i] + 1
+            if self.student_array[self.seq_boundaries[i]] > self.student_array[next1] and not (
+                    self.cookie_array[self.seq_boundaries[i]] > self.cookie_array[next1]):
+                self.cookie_array[self.seq_boundaries[i]] += 1
 
 
 # Finding all possible non decreasing marks/scores
@@ -42,27 +42,32 @@ class CookieDistribution(object):
 
     def find_min_cookies(self, new_array):
         self.student_array = list(new_array)
-        self.chocolate_array = [0] * len(self.student_array)
-        self.incr_boundaries = []
+        self.cookie_array = [0] * len(self.student_array)
+        self.seq_boundaries = []
         n = 0
         while n < len(self.student_array):
             scores_range = self.non_increasing_sequence(n)
-            self.incr_boundaries.append(scores_range[1] - 1)
+            self.seq_boundaries.append(scores_range[1] - 1)
             min_cookie = 1
+            # Assigning incremental cookies for increasing sequences
             for cookie_index in range(scores_range[0], scores_range[1]):
-                print(cookie_index)
-                self.chocolate_array[cookie_index] = min_cookie
+                self.cookie_array[cookie_index] = min_cookie
                 min_cookie += 1
 
             last_index = self.non_increasing_sequence(n)[1]
             n = last_index
-            print("next")
 
         # deleting the last element from the boundary check
-        self.incr_boundaries.pop()
+        self.seq_boundaries.pop()
         print(self.student_array)
-        print(self.chocolate_array)
-        print(self.incr_boundaries)
-        while self.check_chocolates() is False:
-            self.align_cookies()
-            print(self.chocolate_array)
+        print(self.cookie_array)
+        print(self.seq_boundaries)
+        # Check cookies at the boundaries, If not balanced, balance at the corresponding positions
+        while self.check_cookie() is False:
+            self.balance_cookies()
+
+        cookies_distributed = 0
+        for cookie in self.cookie_array:
+            cookies_distributed += cookie
+        print("student array, cookie distribution, Minimum cookies distributed", self.student_array,
+              self.cookie_array, cookies_distributed)

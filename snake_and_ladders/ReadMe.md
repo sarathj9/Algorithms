@@ -17,7 +17,9 @@ Snake bites. So the problem will default to finding the ladder that take us to t
 A formula like below will help us find minimum no. of hops from start to end point using a particular ladder
 
 No. of Hops Required for the given ladder = Total number of minimum hops required to reach the ladder +   --->a
+                                            
                                             (Total number of tiles deducted because of ladder) / 6    +   --->b
+                                            
                                             Total number of minimum hops required from given ladder end   --->c 
                                             point to the end point
                                             
@@ -57,6 +59,7 @@ c is the total no. of tiles (should be found)
     }
   )
   
+
 The lines in dotted are the minimum paths from ladder start point to start point. 
 It is computed by:
  - Identifying the ladder end point that is closest to the current ladder point. 
@@ -64,4 +67,22 @@ It is computed by:
  - Connecting largest ladder end point to the end point. 
  - Connecting smallest ladder start point to the start point.
 
+Json representing the above graph:
+```json
+{"1": [[8, 1], [5, 1]], "5": [[13, 1], [7, 1]], "7": [[13, 1]], "8": [[13, 1]], "13": [[19, 1]], "19": [[21, 1]]}
+```
+Min distance path(s) are : [1, 5, 13, 19, 21], [1, 8, 13, 19, 21]],  with distance, 4
 
+####Examples:
+Json: 
+```json
+{"1": [[2, 1]], "2": [[7, 1], [5, 1]], "5": [[12, 1], [6, 1]], "6": [[12, 1]], "7": [[12, 1], [8, 1]], "8": [[21, 1], [9, 1]], 
+"9": [[15, 1]], "12": [[18, 1], [17, 1]], "15": [[18, 1]], "17": [[21, 1]], "18": [[21, 1]]}')
+```
+Min distance path(s) are : [[1, 12, 17, 21], [1, 12, 18, 21], [1, 7, 8, 21], [1, 12, 17, 21], [1, 12, 18, 21]], with distance 3
+
+Json:
+```json
+{"8": [[19, 1]], "1": [[5, 1]], "19": [[21, 1]], "5": [[13, 1], [8, 1]], "13": [[19, 1]]}
+```
+Min distance path(s) are : [[1, 5, 8, 19, 21], [1, 5, 13, 19, 21]],  with distance, 4
