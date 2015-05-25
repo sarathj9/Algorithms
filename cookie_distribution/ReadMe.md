@@ -12,7 +12,9 @@ Minimize cookie distribution to students based on their marks with following con
     
 ####Solution:
 Degenerated cases:
+
 --- All have got same cookies: all should get only one cookie
+
 --- Students have got scores in increasing order or decreasing order: No. of cookies distributed can never be minimized 
 less than the  maximum possible cookies `n!`
 

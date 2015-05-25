@@ -66,10 +66,10 @@ Steps followed to satisfy above equation
   )
   
 
-The lines in dotted are the minimum paths from ladder start point to start point. 
+The lines in dotted are the minimum paths from ladder start points to the start point and ladder end points to the end point. 
 
 It is computed by:
- - Identifying the ladder end point that is closest to the current ladder point. 
+ - Identifying the ladder end point that is closest to the current ladder start point. 
  - Identifying ladder start point closest to current ladder end point.
  - Connecting largest ladder end point to the end point. 
  - Connecting smallest ladder start point to the start point.
@@ -78,7 +78,7 @@ Json representing the above graph:
 ```json
 {"1": [[8, 1], [5, 1]], "5": [[13, 1], [7, 1]], "7": [[13, 1]], "8": [[13, 1]], "13": [[19, 1]], "19": [[21, 1]]}
 ```
-Min distance path(s) are : [1, 5, 13, 19, 21], [1, 8, 13, 19, 21]],  with distance, 4
+Min distance path(s) are : `[1, 5, 13, 19, 21], [1, 8, 13, 19, 21]]`,  with distance, 4
 
 ####Examples:
 Json: 
@@ -86,10 +86,10 @@ Json:
 {"1": [[2, 1]], "2": [[7, 1], [5, 1]], "5": [[12, 1], [6, 1]], "6": [[12, 1]], "7": [[12, 1], [8, 1]], "8": [[21, 1], [9, 1]], 
 "9": [[15, 1]], "12": [[18, 1], [17, 1]], "15": [[18, 1]], "17": [[21, 1]], "18": [[21, 1]]}')
 ```
-Min distance path(s) are : [[1, 12, 17, 21], [1, 12, 18, 21], [1, 7, 8, 21], [1, 12, 17, 21], [1, 12, 18, 21]], with distance 3
+Min distance path(s) are : `[[1, 12, 17, 21], [1, 12, 18, 21], [1, 7, 8, 21], [1, 12, 17, 21], [1, 12, 18, 21]]`, with distance 3
 
 Json:
 ```json
 {"8": [[19, 1]], "1": [[5, 1]], "19": [[21, 1]], "5": [[13, 1], [8, 1]], "13": [[19, 1]]}
 ```
-Min distance path(s) are : [[1, 5, 8, 19, 21], [1, 5, 13, 19, 21]],  with distance, 4
+Min distance path(s) are : `[[1, 5, 8, 19, 21], [1, 5, 13, 19, 21]]`,  with distance, 4
