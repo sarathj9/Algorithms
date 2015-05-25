@@ -40,7 +40,6 @@ Steps followed to satisfy above equation
 
 | ladder Name| start point|end point|
 | -----------|:----------:| -------:|
-|l1          |1           |5        |
 |l2          |5           |13       |
 |l3          |13          |19       |
 |l4          |7           |13       |
